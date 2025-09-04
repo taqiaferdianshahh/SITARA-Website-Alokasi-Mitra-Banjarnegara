@@ -33,6 +33,11 @@ const submit = () => {
     <GuestLayout>
         <Head title="Log in" />
 
+        <!-- Menambahkan Logo Responsif dan Diletakkan di Tengah -->
+        <div class="flex justify-center mb-6">
+            <img src="/images/logo.png" alt="Logo" class="logo" />
+        </div>
+
         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}
         </div>
@@ -87,8 +92,9 @@ const submit = () => {
                     Forgot your password?
                 </Link>
 
+                <!-- Menambahkan class untuk tombol login dan menempatkan di pojok kanan -->
                 <PrimaryButton
-                    class="ms-4"
+                    class="ms-4 login-button"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
@@ -98,3 +104,46 @@ const submit = () => {
         </form>
     </GuestLayout>
 </template>
+
+<style scoped>
+/* Menambahkan gaya untuk logo agar responsif dan seimbang */
+.logo {
+    max-width: 100%;  /* Membuat logo menyesuaikan lebar kontainer */
+    height: auto;     /* Memastikan aspek rasio logo tetap terjaga */
+    width: 180px;     /* Ukuran default logo */
+}
+
+/* Membuat logo lebih kecil di perangkat mobile */
+@media (max-width: 768px) {
+    .logo {
+        width: 150px; /* Ukuran logo lebih kecil di layar kecil */
+    }
+}
+
+/* Gaya untuk tombol login */
+.login-button {
+    background-color: #17B1CF; /* Warna biru */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Membuat tombol lebih responsif dan lebih kecil di perangkat mobile */
+@media (max-width: 768px) {
+    .login-button {
+        width: 100%;  /* Tombol akan mengisi lebar penuh di perangkat kecil */
+    }
+}
+
+.login-button:hover {
+    background-color: #139CB4; /* Biru lebih gelap saat hover */
+}
+
+.login-button:disabled {
+    background-color: #D1D5DB; /* Warna abu-abu saat disabled */
+    cursor: not-allowed;
+}
+</style>

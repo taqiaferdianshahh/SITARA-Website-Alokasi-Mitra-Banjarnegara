@@ -31,10 +31,7 @@ const submit = () => {
             you to choose a new one.
         </div>
 
-        <div
-            v-if="status"
-            class="mb-4 text-sm font-medium text-green-600"
-        >
+        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}
         </div>
 
@@ -57,6 +54,7 @@ const submit = () => {
 
             <div class="mt-4 flex items-center justify-end">
                 <PrimaryButton
+                    class="login-button"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
@@ -66,3 +64,36 @@ const submit = () => {
         </form>
     </GuestLayout>
 </template>
+
+<style scoped>
+/* Gaya untuk tombol reset password yang lebih kecil */
+.login-button {
+    background-color: #17B1CF; /* Warna biru */
+    color: white;
+    padding: 8px 16px; /* Menyesuaikan padding tombol */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Mengurangi ukuran font */
+    width: auto;  /* Lebar otomatis agar sesuai dengan konten */
+    text-align: center;
+}
+
+.login-button:hover {
+    background-color: #139CB4; /* Biru lebih gelap saat hover */
+}
+
+.login-button:disabled {
+    background-color: #D1D5DB; /* Warna abu-abu saat disabled */
+    cursor: not-allowed;
+}
+
+/* Membuat tombol lebih responsif di perangkat kecil */
+@media (max-width: 768px) {
+    .login-button {
+        width: 100%;  /* Tombol mengisi lebar penuh pada perangkat kecil */
+        font-size: 14px; /* Ukuran font lebih kecil di perangkat kecil */
+        padding: 10px 20px; /* Padding disesuaikan agar lebih pas */
+    }
+}
+</style>
